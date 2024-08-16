@@ -1,4 +1,3 @@
-// ScanQRCodeFromImage.js
 import React, { useState, useRef } from 'react';
 import QrReader from 'react-qr-reader';
 

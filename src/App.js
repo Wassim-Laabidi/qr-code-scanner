@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'; // Import the CSS file
+import './App.css';
 import GenerateQRCode from './components/GenerateQRCode';
 import ScanQRCodeFromImage from './components/ScanQRCodeFromImage';
 import ScanQRCodeByWebCam from './components/ScanQRCodeByWebCam';
