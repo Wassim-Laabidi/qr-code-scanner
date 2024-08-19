@@ -15,7 +15,7 @@ function ScanQRCodeFromImage() {
             setScanResultFile(result);
 
             // Send the scanned result to the backend service
-            axios.post('http://197.13.9.211/api/qr-code', { qrText: result })
+            axios.post('http://197.13.9.211:3001/api/qr-code', { qrText: result })
                 .then(response => {
                     console.log('QR Code sent to backend successfully:', response.data);
                 })
