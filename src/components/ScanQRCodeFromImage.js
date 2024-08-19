@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import QrReader from 'react-qr-reader';
+import axios from 'axios';
 
 function ScanQRCodeFromImage() {
     const [scanResultFile, setScanResultFile] = useState('');
@@ -12,6 +13,15 @@ function ScanQRCodeFromImage() {
     const handleScanFile = (result) => {
         if (result) {
             setScanResultFile(result);
+
+            // Send the scanned result to the backend service
+            axios.post('http://197.13.9.211/api/qr-code', { qrText: result })
+                .then(response => {
+                    console.log('QR Code sent to backend successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error sending QR Code to backend:', error);
+                });
         }
     };
 

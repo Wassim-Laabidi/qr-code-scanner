@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import QrReader from 'react-qr-reader';
+import axios from 'axios';
 
 function ScanQRCodeByWebCam() {
     const [scanResultWebCam, setScanResultWebCam] = useState('');
@@ -11,6 +12,15 @@ function ScanQRCodeByWebCam() {
     const handleScanWebCam = (result) => {
         if (result) {
             setScanResultWebCam(result);
+
+            // Send the scanned result to the backend service
+            axios.post('http://197.13.9.211/api/qr-code', { qrText: result })
+                .then(response => {
+                    console.log('QR Code sent to backend successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error sending QR Code to backend:', error);
+                });
         }
     };
 
